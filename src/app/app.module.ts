@@ -7,14 +7,11 @@ import { LoginComponent } from './login/login.component';
 import { APP_ROUTES } from './app.route';
 import { RegistrerComponent } from './login/registrer.component';
 import { PagesModule } from './pages/pages.module';
-
+import { IncrementadorComponent } from './components/incrementador/incrementador.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    RegistrerComponent,
-  ],
-  imports: [BrowserModule, APP_ROUTES, PagesModule],
+  declarations: [AppComponent, LoginComponent, RegistrerComponent],
+  imports: [BrowserModule, APP_ROUTES, PagesModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

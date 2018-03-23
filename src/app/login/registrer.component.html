@@ -1,7 +1,8 @@
 <!-- ============================================================== -->
 <!-- Main wrapper - style you can find in pages.scss -->
 <!-- ============================================================== -->
-<section id="wrapper" class="login-register login-sidebar" formControlName="password2" style="background-image:url(assets/images/background/login-register.jpg);">
+<!-- formControlName="password2" -->
+<section id="wrapper" class="login-register login-sidebar" style="background-image:url(assets/images/background/login-register.jpg);">
     <div class="login-box card">
         <div class="card-body">
             <!-- [formGroup]="forma" formControlName="correo" formControlName="password" formControlName="nombre" (ngSubmit)="registrarUsuario()" -->
@@ -39,7 +40,8 @@
                 <div class="form-group row">
                     <div class="col-md-12">
                         <div class="checkbox checkbox-primary p-t-0">
-                            <input formControlName="condiciones" name="condiciones" id="checkbox-signup" type="checkbox">
+                            <!-- formControlName="condiciones" -->
+                            <input name="condiciones" id="checkbox-signup" type="checkbox">
                             <label for="checkbox-signup"> Estoy de acuerdo con los <a href="#">términos</a></label>
                         </div>
                     </div>
