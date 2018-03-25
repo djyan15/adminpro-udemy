@@ -23,8 +23,8 @@ clearInterval(intervalo);
   observer.complete();
 
 }
-if (contador === 2){
-
+if (contador === 2) {
+clearInterval(intervalo);
   observer.error();
 }
 
