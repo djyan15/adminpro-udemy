@@ -8,12 +8,12 @@ import { APP_ROUTES } from './app.route';
 import { RegistrerComponent } from './login/registrer.component';
 import { PagesModule } from './pages/pages.module';
 import { IncrementadorComponent } from './components/incrementador/incrementador.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ServiceModule } from './services/service.module';
 @NgModule({
   declarations: [AppComponent, LoginComponent, RegistrerComponent],
-  imports: [BrowserModule, APP_ROUTES, PagesModule, FormsModule, ServiceModule],
+  imports: [BrowserModule, APP_ROUTES, PagesModule, FormsModule, ServiceModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
