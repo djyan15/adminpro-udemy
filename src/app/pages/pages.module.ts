@@ -13,6 +13,14 @@ import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.co
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { ProfileComponent } from './profile/profile.component';
+import { CommonModule } from '@angular/common';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { ArticulosComponent } from './articulos/articulos.component';
+import { PagosComponent } from './pagos/pagos.component';
+import { ClientesComponent } from './clientes/clientes.component';
+import { FacturacionComponent } from './facturacion/facturacion.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +33,12 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     AccountSettingsComponent,
     PromesasComponent,
     RxjsComponent,
+    ProfileComponent,
+    UsuariosComponent,
+    ArticulosComponent,
+    PagosComponent,
+    ClientesComponent,
+    FacturacionComponent,
   ],
   exports: [
     PagesComponent,
@@ -34,6 +48,6 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     IncrementadorComponent,
     GraficoDonaComponent,
   ],
-  imports: [SharedModule, PagesRoutingModule, FormsModule, ChartsModule],
+  imports: [SharedModule, PipesModule, CommonModule, PagesRoutingModule, FormsModule, ChartsModule],
 })
 export class PagesModule {}

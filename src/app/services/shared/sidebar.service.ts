@@ -5,13 +5,23 @@ export class SidebarService {
   menu: any = [
     {
       titulo: 'Menu',
-      icono: 'mdi mdi-gauge',
+      icono: 'mdi mdi-menu',
       submenu: [
-        { titulo: 'Dashboard', url: '/dashboard' },
-        { titulo: 'ProgressBar', url: '/progress' },
-        { titulo: 'Gráficas', url: '/graficas1' },
-        { titulo: 'Promesas', url: '/promesas' },
-        { titulo: 'rxjs', url: '/rxjs' },
+        { titulo: 'Dashboard', url: '/dashboard', icono: 'mdi mdi-view-dashboard' },
+        // { titulo: 'ProgressBar', url: '/progress' },
+        { titulo: 'Gráficas', url: '/graficas1', icono: 'mdi mdi-chart-bar' },
+        // { titulo: 'Promesas', url: '/promesas' },
+        // { titulo: 'rxjs', url: '/rxjs' },
+      ],
+    },
+    {
+      titulo: 'Mantenimiento',
+      icono: 'mdi mdi-settings-box',
+      submenu: [
+        { titulo: 'Usuarios', url: '/usuarios', icono: 'mdi mdi-account-box' },
+        { titulo: 'Articulos', url: '/articulos', icono: 'fas fa-barcode' },
+        { titulo: 'Condiciones de Pagos', url: '/pagos', icono: 'mdi mdi-account-card-details' },
+        { titulo: 'Clientes', url: '/clientes', icono: 'mdi mdi-account-circle' },
       ],
     },
   ];

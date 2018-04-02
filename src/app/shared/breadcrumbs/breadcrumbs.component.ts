@@ -15,7 +15,7 @@ pagina: string = '';
   public title: Title,
 public meta: Meta) {
 this.getDataRoute().subscribe(data => {
-  console.log( data);
+  // console.log( data);
   this.pagina = data.titulo;
   this.title.setTitle(this.pagina);
 

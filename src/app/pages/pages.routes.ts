@@ -1,3 +1,5 @@
+import { ClientesComponent } from './clientes/clientes.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -7,12 +9,18 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { LoginGuardGuard } from '../services/guards/login-guard.guard';
+import { ProfileComponent } from './profile/profile.component';
+import { PagosComponent } from './pagos/pagos.component';
+import { ArticulosComponent } from './articulos/articulos.component';
+import { FacturacionComponent } from './facturacion/facturacion.component';
 
 
 const pagesRoutes: Routes = [
   {
     path: '',
     component: PagesComponent,
+    canActivate: [LoginGuardGuard],
     children: [
       { path: 'progress', component: ProgressComponent, data: { titulo: 'ProgressBar' } },
       { path: 'graficas1', component: Graficas1Component, data: { titulo: 'Graficas' } },
@@ -20,6 +28,13 @@ const pagesRoutes: Routes = [
       { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajuste del tema' } },
       { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
       { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },
+      { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil del Usuario' } },
+      // Mantenimietnos
+      { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenimiento de Usuarios' } },
+      { path: 'pagos', component: PagosComponent, data: { titulo: 'Mantenimiento de Pagos' } },
+      { path: 'clientes', component: ClientesComponent, data: { titulo: 'Mantenimiento de Clientes' } },
+      { path: 'articulos', component: ArticulosComponent, data: { titulo: 'Mantenimiento de Articulos' } },
+      { path: 'facturacion', component: FacturacionComponent, data: { titulo: 'Realizar Factura de Articulo' } },
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     ],
   },
