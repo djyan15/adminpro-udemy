@@ -1,3 +1,4 @@
+import { ClienteComponent } from './clientes/cliente.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -12,8 +13,10 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { LoginGuardGuard } from '../services/guards/login-guard.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { PagosComponent } from './pagos/pagos.component';
+
 import { ArticulosComponent } from './articulos/articulos.component';
 import { FacturacionComponent } from './facturacion/facturacion.component';
+import { PagoComponent } from './pagos/pago.component';
 
 
 const pagesRoutes: Routes = [
@@ -32,6 +35,9 @@ const pagesRoutes: Routes = [
       // Mantenimietnos
       { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenimiento de Usuarios' } },
       { path: 'pagos', component: PagosComponent, data: { titulo: 'Mantenimiento de Pagos' } },
+      { path: 'pago/:id', component: PagoComponent, data: { titulo: 'Editar Pagos' } },
+
+      { path: 'cliente/:id', component: ClienteComponent, data: { titulo: 'Editar Clientes' } },
       { path: 'clientes', component: ClientesComponent, data: { titulo: 'Mantenimiento de Clientes' } },
       { path: 'articulos', component: ArticulosComponent, data: { titulo: 'Mantenimiento de Articulos' } },
       { path: 'facturacion', component: FacturacionComponent, data: { titulo: 'Realizar Factura de Articulo' } },

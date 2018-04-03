@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { URL_SERVICIOS } from '../../config/config';
-
+declare var swal: any;
 @Injectable()
 export class SubirArchivoService {
   constructor() { }
@@ -23,6 +23,9 @@ export class SubirArchivoService {
         if (xhr.status === 200) {
           console.log('Imagen subida');
           resolve(JSON.parse( xhr.response ));
+          let user = JSON.parse(xhr.response);
+        // location.reload();
+        swal('Imagen Actualizada', 'guardado correctamente', 'success');
         } else {
 
           console.log('Fallo la subida');

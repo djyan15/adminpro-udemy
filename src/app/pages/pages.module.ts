@@ -1,3 +1,5 @@
+import { PagoComponent } from './pagos/pago.component';
+import { ModalUploadComponent } from './../components/modal-upload/modal-upload.component';
 import { PagesRoutingModule } from './pages.routes';
 import { FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
@@ -21,6 +23,9 @@ import { ArticulosComponent } from './articulos/articulos.component';
 import { PagosComponent } from './pagos/pagos.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { FacturacionComponent } from './facturacion/facturacion.component';
+import { ClienteComponent } from './clientes/cliente.component';
+import { ArticuloComponent } from './articulos/articulo.component';
+import { FacturasComponent } from './facturacion/facturas.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +44,11 @@ import { FacturacionComponent } from './facturacion/facturacion.component';
     PagosComponent,
     ClientesComponent,
     FacturacionComponent,
+    ModalUploadComponent,
+    PagoComponent,
+    ClienteComponent,
+    ArticuloComponent,
+    FacturasComponent
   ],
   exports: [
     PagesComponent,

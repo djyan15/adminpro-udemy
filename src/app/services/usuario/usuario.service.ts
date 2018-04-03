@@ -19,8 +19,8 @@ export class UsuarioService {
   token: string;
   constructor(public http: HttpClient, public router: Router, public _subirArchivo: SubirArchivoService) {
 
-this.cargarStorage();
-
+  this.cargarStorage();
+  //  console.log(this.cargarStorage());
   }
 
 logueado() {
@@ -32,12 +32,13 @@ cargarStorage() {
 if ( localStorage.getItem('token')) {
  this.token = localStorage.getItem('token');
  this.usuario = JSON.parse( localStorage.getItem('usuario') );
-
+return this.usuario;
 } else {
    this.token = '';
    this.usuario = null;
 }
-
+// tslint:disable-next-line:no-debugger
+debugger;
 }
 guardarStorage (id: string, token: string, usuario: Usuario) {
 localStorage.setItem('id', id);
@@ -106,7 +107,7 @@ return resp.usuario;
 let url = URL_SERVICIOS + '/usuario/' + usuario._id;
 url +=  '?token=' + this.token;
 
-console.log(url);
+// console.log(url);
 return this.http.put(url, usuario)
 .map((resp: any) => {
 // this.usuario = resp.usuario;
@@ -125,11 +126,11 @@ return true;
 
   }
   cambiarImagen(archivo: File, id: string) {
-console.log(archivo.name, id);
+// console.log(archivo.name, id);
 this._subirArchivo.subirArchivo(archivo, 'usuarios', id)
 
 .then((resp: any) => {
-console.log(resp);
+// console.log(resp);
 
 this.usuario.img = resp.usuario.img;
 swal( 'Imagen Actualizada', this.usuario.nombre, 'success' );

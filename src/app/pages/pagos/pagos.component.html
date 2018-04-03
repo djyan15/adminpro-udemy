@@ -1,3 +1,73 @@
-<p>
-  pagos works!
-</p>
+<div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere por favor</span>
+        </div>
+    </div>
+
+</div>
+
+<div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Pagos Registrados ( <small>{{total}}</small> )</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+
+                            <th>Descripción</th>
+                            <th>Cantidad de Dias</th>
+                            <th>Estado</th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let pago of pagos">
+
+                            <td>
+
+                                {{ pago.descripcion }}
+
+
+                            </td>
+                            <p class="text-center">
+                                <td>{{ pago.cantidadDias }}</td>
+                            </p>
+                            <td>
+                                <select [(ngModel)]="pago.estado" name="estados" disabled="true" class="form-control">
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                                </select>
+
+                            </td>
+
+                            <td>
+                                <button [routerLink]="['/pago', pago._id ]" class="btn btn-primary">
+                                 <i class="fa fa-edit"></i>
+                               </button>
+
+                                <button (click)="borrarPagos(pago)" class="btn btn-danger">
+                                 <i class="fa fa-trash-o"></i>
+                               </button>
+
+                            </td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

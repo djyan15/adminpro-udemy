@@ -13,6 +13,7 @@ usuario: Usuario;
 
   ngOnInit() {
     this.usuario = this._usuarioService.usuario;
+    // console.log(this.usuario.img);
   }
 
 

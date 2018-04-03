@@ -1,3 +1,4 @@
+import { ModalUploadService } from './../../components/modal-upload/modal-upload.service';
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
 import { UsuarioService } from '../../services/service.index';
@@ -13,10 +14,13 @@ export class UsuariosComponent implements OnInit {
   desde: number = 0;
   total: number = 0;
   cargando: boolean = true;
-  constructor(public usuarioService: UsuarioService) {}
+  constructor(public usuarioService: UsuarioService, public modalupload: ModalUploadService) {}
 
   ngOnInit() {
     this.cargarUsuarios();
+    this.usuarioService.cargarStorage();
+    // console.log(this.usuarioService.cargarStorage());
+    this.modalupload.notificacion.subscribe(resp => this.cargarUsuarios());
   }
 
   cargarUsuarios() {
@@ -41,16 +45,18 @@ export class UsuariosComponent implements OnInit {
     this.cargarUsuarios();
   }
   buscarUsuario(termino: string) {
-    if (termino.length <= 0) {
-      this.cargarUsuarios();
-      return;
-    }
-    this.cargando = true;
-    this.usuarioService.buscarUsuarios(termino).subscribe((usuarios: Usuario[]) => {
-      this.usuarios = usuarios;
 
-      this.cargando = false;
-    });
+      if (termino.length <= 0) {
+        this.cargarUsuarios();
+        return;
+      }
+
+      this.cargando = true;
+
+      this.usuarioService.buscarUsuarios(termino).subscribe((usuarios: Usuario[]) => {
+        this.usuarios = usuarios;
+        this.cargando = false;
+      });
   }
   borrarUsuario(usuario: Usuario) {
     if (usuario._id === this.usuarioService.usuario._id) {
@@ -82,5 +88,8 @@ export class UsuariosComponent implements OnInit {
 this.usuarioService.actualizarUsuario(usuario)
 .subscribe();
 
+  }
+  mostrarModal(id: string ) {
+this.modalupload.mostrarModal('usuarios', id);
   }
 }
