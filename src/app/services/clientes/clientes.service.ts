@@ -25,12 +25,25 @@ url += '?token=' + this._usuarioServices.token;
 
 return this.http.put(url, cliente);
  }
- crearClientes () {
+ crearClientes (cliente: Clientes) {
+let url = URL_SERVICIOS + '/cliente';
+url += '?token=' + this._usuarioServices.token;
+ this.http.post(url, cliente)
+.map((resp: any) => {
+swal('Cliente Creado', cliente.nombreComercial, 'success');
+return resp.medico;
 
+});
  }
  cargarClientes() {
 let url = URL_SERVICIOS + '/cliente';
 
 return this.http.get(url);
+ }
+
+ buscarClientes(termino: string) {
+   let url = URL_SERVICIOS + '/busqueda/coleccion/cliente/' + termino;
+   return this.http.get(url).map((resp: any) => resp.cliente);
+
  }
 }

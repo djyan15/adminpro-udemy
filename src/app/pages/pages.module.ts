@@ -1,7 +1,7 @@
 import { PagoComponent } from './pagos/pago.component';
 import { ModalUploadComponent } from './../components/modal-upload/modal-upload.component';
 import { PagesRoutingModule } from './pages.routes';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 
 import { NgModule } from '@angular/core';
@@ -48,7 +48,7 @@ import { FacturasComponent } from './facturacion/facturas.component';
     PagoComponent,
     ClienteComponent,
     ArticuloComponent,
-    FacturasComponent
+    FacturasComponent,
   ],
   exports: [
     PagesComponent,
@@ -58,6 +58,6 @@ import { FacturasComponent } from './facturacion/facturas.component';
     IncrementadorComponent,
     GraficoDonaComponent,
   ],
-  imports: [SharedModule, PipesModule, CommonModule, PagesRoutingModule, FormsModule, ChartsModule],
+  imports: [SharedModule, ReactiveFormsModule, PipesModule, CommonModule, PagesRoutingModule, FormsModule, ChartsModule],
 })
 export class PagesModule {}

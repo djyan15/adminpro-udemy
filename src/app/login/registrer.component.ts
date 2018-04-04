@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import * as sweetalert from 'sweetalert';
+
+import * as _swal from 'sweetalert';
+import { SweetAlert } from 'sweetalert/typings/core';
+const swal: SweetAlert = _swal as any;
+
 
 import { UsuarioService } from '../services/service.index';
 import { Usuario } from '../models/usuario.model';

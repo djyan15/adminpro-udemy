@@ -15,9 +15,14 @@ export class PagosService {
 
    return this.http.get( url );
   }
-crearPagos() {
+crearPagos(pago: Pagos) {
 
+ let url = URL_SERVICIOS + '/pagos';
 
+ url += '?token=' + this._usuarioServices.token;
+
+ return this.http.post(url, pago)
+ .map((resp: any) => resp.pagos );
 
 
 
@@ -41,5 +46,10 @@ url += '?token=' + this._usuarioServices.token;
 return this.http.delete( url );
 
 }
+obtenerPagos(id: string) {
+let url = URL_SERVICIOS + '/pagos/' + id;
 
+return this.http.get(url)
+.map((resp: any) => resp.pagos);
+}
 }

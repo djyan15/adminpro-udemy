@@ -34,8 +34,7 @@ swal({
 
       this.cargarPagos();
     });
-    swal('Pago Borrado', pagos.descripcion, 'success');
-  }
+swal('Pago Borrado', 'Eliminado Correctamente', 'Success');  }
 });
 
   }
@@ -47,9 +46,9 @@ swal({
       this.cargando = false;
     });
   }
-  editarPagos(pagos: Pagos) {
-    this.router.navigate(['/pago']);
-  }
+  // editarPagos(pagos: Pagos) {
+  //   this.router.navigate(['/pago']);
+  // }
 //   guardarPagos(pagos: Pagos) {
 
 // this._pagosServices.actualizarPagos(pagos).subscribe((resp: any) => {

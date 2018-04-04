@@ -35,9 +35,9 @@ const pagesRoutes: Routes = [
       // Mantenimietnos
       { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenimiento de Usuarios' } },
       { path: 'pagos', component: PagosComponent, data: { titulo: 'Mantenimiento de Pagos' } },
-      { path: 'pago/:id', component: PagoComponent, data: { titulo: 'Editar Pagos' } },
+      { path: 'pago/:id', component: PagoComponent, data: { titulo: 'Pagos' } },
 
-      { path: 'cliente/:id', component: ClienteComponent, data: { titulo: 'Editar Clientes' } },
+      { path: 'cliente/:id', component: ClienteComponent, data: { titulo: 'Clientes' } },
       { path: 'clientes', component: ClientesComponent, data: { titulo: 'Mantenimiento de Clientes' } },
       { path: 'articulos', component: ArticulosComponent, data: { titulo: 'Mantenimiento de Articulos' } },
       { path: 'facturacion', component: FacturacionComponent, data: { titulo: 'Realizar Factura de Articulo' } },

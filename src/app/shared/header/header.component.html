@@ -16,7 +16,7 @@
                             <img src="assets/images/297441.png" width="70" height="70" alt="homepage" class="light-logo"/>
                             <img src="assets/images/297441.png" width="70" height="70" alt="homepage" class="dark-logo"/>
                             <!-- <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                            Light Logo icon -->
+                             Light Logo icon -->
                             <!-- <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" /> -->
                         </b>
                 <!--End Logo icon -->
@@ -112,14 +112,12 @@
                 <!-- Profile -->
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img [src]="imagenTemp.img | imagen" alt="user" class="profile-pic" /></a>
+                    <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img [src]="usuario.img | imagen" alt="user" class="profile-pic" /></a>
                     <div class="dropdown-menu dropdown-menu-right animated fadeIn">
                         <ul class="dropdown-user">
                             <li>
                                 <div class="dw-user-box" align="center">
-                                    <div class="u-img">
-
-                                        <img [src]="imagenTemp.img | imagen" alt="user"></div>
+                                    <div class="u-img"><img [src]="usuario.img | imagen" alt="user"></div>
                                     <div class="u-text">
                                         <h4>{{usuario.nombre}}</h4>
                                         <p class="text-muted">{{usuario.email}}</p><a routerLink="/perfil" class="btn btn-rounded btn-danger btn-sm">Ver Perfil</a></div>

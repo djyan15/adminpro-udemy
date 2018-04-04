@@ -3,11 +3,13 @@ import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
 import { HttpClient } from '@angular/common/http';
 
-
+// import * as _swal from 'sweetalert';
+// import { SweetAlert } from 'sweetalert/typings/core';
+// const swal: SweetAlert = _swal as any;
 import 'rxjs/add/operator/map';
-// import * as sweetalert from 'sweetalert';
 
- declare var swal: any;
+
+
 import { Router } from '@angular/router';
 import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 
@@ -38,7 +40,7 @@ return this.usuario;
    this.usuario = null;
 }
 // tslint:disable-next-line:no-debugger
-debugger;
+// debugger;
 }
 guardarStorage (id: string, token: string, usuario: Usuario) {
 localStorage.setItem('id', id);
@@ -115,8 +117,6 @@ if (usuario._id === this.usuario._id) {
   let user: Usuario = resp.usuario;
   this.guardarStorage(user._id, this.token, user);
 }
-
-
 
 
 swal('Usuario Actualizado', usuario.nombre , 'success');
