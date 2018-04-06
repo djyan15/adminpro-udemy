@@ -9,11 +9,11 @@ import { RegistrerComponent } from './login/registrer.component';
 import { PagesModule } from './pages/pages.module';
 import { IncrementadorComponent } from './components/incrementador/incrementador.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { CustomFormsModule } from 'ng2-validation';
 import { ServiceModule } from './services/service.module';
 @NgModule({
   declarations: [AppComponent, LoginComponent, RegistrerComponent],
-  imports: [BrowserModule, APP_ROUTES, PagesModule, FormsModule, ServiceModule, ReactiveFormsModule],
+  imports: [BrowserModule, APP_ROUTES, PagesModule, FormsModule, ServiceModule, ReactiveFormsModule, CustomFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

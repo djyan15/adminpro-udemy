@@ -19,7 +19,7 @@ export class SidebarService {
       icono: 'mdi mdi-settings-box',
       submenu: [
         { titulo: 'Usuarios', url: '/usuarios', icono: 'mdi mdi-account-box' },
-        { titulo: 'Articulos', url: '/articulos', icono: 'fas fa-barcode' },
+        { titulo: 'Articulos', url: '/articulos', icono: 'fa fa-archive' },
         { titulo: 'Condiciones de Pagos', url: '/pagos', icono: 'mdi mdi-account-card-details' },
         { titulo: 'Clientes', url: '/clientes', icono: 'mdi mdi-account-circle' },
       ],

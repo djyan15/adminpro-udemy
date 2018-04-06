@@ -5,26 +5,27 @@
             <h3 class="box-title m-b-0">Pagos:</h3>
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
-                    <form #f="ngForm" ngNativeValidate>
+                    <form #f="ngForm" (ngSubmit)="guardarPagos( f )">
                         <div class="form-group">
                             <label>Descripcion</label>
-                            <input name="nombre" type="text" class="form-control" placeholder="Nombre del médico" required>
+                            <input [(ngModel)]="pago.descripcion" name="descripcion" type="text" class="form-control" placeholder="Descripción del pago" required>
                         </div>
 
                         <div class="form-group">
                             <label>Cantidad de días</label>
-                            <input type="number" class="form-control" min=1 max=100>
+                            <input [(ngModel)]="pago.cantidadDias" name="cantidadDias" type="number" class="form-control" min=1 placeholder="Cantidad de Dias">
 
                         </div>
                         <div>
                             <label>Estado</label>
-                            <select name="estado" class="form-control">
-                                    <option value="Activo">Activo</option>
-                                    <option value="Inactivo">Inactivo</option>
+                            <select [(ngModel)]="pago.estado" name="estado" class="form-control" required>
+                                    <option value="">Seleccione Una Opción</option>
+                                   <option value ="Activo">Activo</option>
+                             <option value ="Inactivo">Inactivo</option>
                                 </select>
                         </div>
                         <br><br>
-                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                        <button type="submit" [disabled]="f.invalid" class="btn btn-success waves-effect waves-light m-r-10">
                           <i class="fa fa-save"></i>
                           Guardar
                         </button>

@@ -34,7 +34,7 @@ swal({
 
       this.cargarPagos();
     });
-swal('Pago Borrado', 'Eliminado Correctamente', 'Success');  }
+swal('Pago Borrado', 'Eliminado Correctamente', 'success');  }
 });
 
   }

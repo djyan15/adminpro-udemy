@@ -26,6 +26,7 @@ import { FacturacionComponent } from './facturacion/facturacion.component';
 import { ClienteComponent } from './clientes/cliente.component';
 import { ArticuloComponent } from './articulos/articulo.component';
 import { FacturasComponent } from './facturacion/facturas.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { FacturasComponent } from './facturacion/facturas.component';
     ClienteComponent,
     ArticuloComponent,
     FacturasComponent,
+    BusquedaComponent,
   ],
   exports: [
     PagesComponent,

@@ -1,3 +1,71 @@
-<p>
-  articulos works!
-</p>
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input #input type="text" class="form-control" placeholder="Buscar médico...">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="text-right">
+                    <button [routerLink]="['/articulo','nuevo']" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                    <i class="fa fa-plus"></i>
+                    Crear Médico
+                  </button>
+                </div>
+
+                <h3 class="card-title">Médicos registrados ( <small> 123 </small> )</h3>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Médico</th>
+                            <th>Hospital</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <!-- [src]="medico.img | imagen:'medico'" -->
+                                <img class="img-50 img-circle">
+                            </td>
+                            <td>
+                                <!-- {{ medico.nombre }} -->
+                            </td>
+                            <td>
+                                <!-- {{ medico.hospital.nombre }} -->
+                            </td>
+                            <td>
+                                <button [routerLink]="['/articulo', 'nuevo' ]" class="btn btn-primary">
+                                <i class="fa fa-edit"></i>
+                              </button>
+
+                                <button class="btn btn-danger">
+                                <i class="fa fa-trash-o"></i>
+                              </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-secondary"> Anteriores
+                                </button>
+                <button class="btn btn-secondary">
+                  Siguientes
+                </button>
+                <!-- (click)="cambiarDesde(-5)"  (click)="cambiarDesde(5)" -->
+
+            </div>
+        </div>
+    </div>
+</div>

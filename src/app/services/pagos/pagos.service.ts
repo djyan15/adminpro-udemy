@@ -15,25 +15,51 @@ export class PagosService {
 
    return this.http.get( url );
   }
-crearPagos(pago: Pagos) {
+guardarPagos(pago: Pagos) {
 
  let url = URL_SERVICIOS + '/pagos';
 
- url += '?token=' + this._usuarioServices.token;
 
- return this.http.post(url, pago)
- .map((resp: any) => resp.pagos );
+if (pago._id) {
+// ACTUALIZAR
+
+  url += '/' + pago._id;
+  url += '?token=' + this._usuarioServices.token;
+
+  return this.http.put(url, pago).map((resp: any) => {
+    swal('Pago Actualizado', pago.descripcion, 'success');
+    return resp.pagos;
+  });
+
+
+
+} else {
+// CREAR
+
+url += '?token=' + this._usuarioServices.token;
+return this.http.post(url, pago)
+.map((resp: any) => {
+  swal('Pago Creado', pago.descripcion, 'success');
+  return resp.pagos;
+});
+
+}
+
 
 
 
 }
+CargarPagosId(id: string) {
+
+let url = URL_SERVICIOS + '/pagos/' + id;
+
+return this.http.get(url)
+.map((resp: any) => resp.pagos);
+
+}
 actualizarPagos(pago: Pagos) {
 
-  let url = URL_SERVICIOS + '/pagos/' + pago._id;
 
-url += '?token=' + this._usuarioServices.token;
-
-return this.http.put( url, pago);
 
 
 }
