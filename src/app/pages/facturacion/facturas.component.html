@@ -1,3 +1,122 @@
-<p>
-  facturas works!
-</p>
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <!--  -->
+                <input #input (keyup)=" buscarFacturas( input.value )" type="text" class="form-control" placeholder="Buscar Facturas...">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere por favor</span>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="text-right">
+                    <button [routerLink]="['/facturacion','nuevo']" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                    <i class="fa fa-plus"></i>
+                    Crear Facturas
+                  </button>
+                </div>
+
+                <h3 class="card-title">Facturas registradas ( <small> {{total}} </small> )</h3>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Articulo</th>
+                            <th>cliente</th>
+                            <th>Precio</th>
+                            <th>Pago</th>
+                            <th>Cantidad</th>
+                            <th>Comision</th>
+                            <th>Comentario</th>
+                            <th>Fecha</th>
+
+                            <th>Estado</th>
+
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let facturas of factura">
+
+                            <td>
+                                {{facturas.articulo.descripcion}}
+                                <!-- {{ medico.nombre }} -->
+                            </td>
+                            <td>
+                                {{facturas.cliente.nombreComercial}}
+                                <!-- {{ medico.hospital.nombre }} -->
+                            </td>
+                            <td>
+                                {{facturas.precio}}
+                                <!-- {{ medico.hospital.nombre }} -->
+                            </td>
+                            <td>
+                                {{facturas.pago.descripcion}}
+                                <!-- {{ medico.hospital.nombre }} -->
+                            </td>
+                            <td>
+                                {{facturas.cantidad}}
+                                <!-- {{ medico.hospital.nombre }} -->
+                            </td>
+                            <td>
+                                {{facturas.comision}}
+                                <!-- {{ medico.hospital.nombre }} -->
+                            </td>
+                            <td>
+                                {{facturas.comentario}}
+                                <!-- {{ medico.hospital.nombre }} -->
+                            </td>
+                            <td>
+                                {{facturas.fecha | date:'MMM d, y'}}
+                                <!-- {{ medico.hospital.nombre }} -->
+                            </td>
+                            <td>
+                                {{facturas.estado}}
+                                <!-- <input [(ngModel)]="facturas.estado " name="estado " disabled="true " class="form-control "> -->
+                                <!-- <option value="Activo ">Activo</option>
+                                    <option value="Inactivo ">Inactivo</option> -->
+                                <!-- </input> -->
+
+                            </td>
+                            <td>
+                                <button [routerLink]="[ '/facturacion', facturas._id ] " class="btn btn-primary ">
+                                <i class="fa fa-edit "></i>
+                              </button>
+
+                                <button class="btn btn-danger ">
+                                <i class="fa fa-trash-o "></i>
+                              </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-secondary  " (click)="cambiarDesde(-5) "> Anteriores
+                                </button>
+                <button class="btn btn-secondary " (click)="cambiarDesde(5) ">
+                  Siguientes
+                </button>
+                <!--  (click)="cambiarDesde(5) " -->
+
+            </div>
+        </div>
+    </div>
+</div>

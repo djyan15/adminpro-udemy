@@ -17,49 +17,56 @@ export class ClientesComponent implements OnInit {
   ngOnInit() {
     this.cargarClientes();
   }
-  actualizarClientes(cliente: Clientes) {}
+  // actualizarClientes(cliente: Clientes) {}
 
   cargarClientes() {
     this.cargando = true;
-this.clienteServices.cargarClientes().subscribe((resp: any) => {
-  // console.log(resp);
-  this.total = resp.total;
-    this.cliente = resp.clientes;
-    this.cargando = false;
-});
-
+    this.clienteServices.cargarClientes().subscribe((resp: any) => {
+      // console.log(resp);
+      this.total = resp.total;
+      this.cliente = resp.clientes;
+      this.cargando = false;
+    });
   }
   borrarCliente(cliente: Clientes) {
-swal({
-  title: '¿Esta seguro?',
-  text: 'Esta a punto de borrar a la forma de pago ' + cliente.nombreComercial,
-  icon: 'warning',
-  buttons: true,
-  dangerMode: true,
-}).then(borrar => {
-  if (borrar) {
-    this.clienteServices.borrarClientes(cliente).subscribe(resp => {
-this.cargarClientes();
-
-});
-swal('Cliente Borrado', 'Eliminado Correctamente', 'success');  }
-
-
-  });
+    swal({
+      title: '¿Esta seguro?',
+      text: 'Esta a punto de borrar a la forma el cliente ' + cliente.nombreComercial,
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then(borrar => {
+      if (borrar) {
+        this.clienteServices.borrarClientes(cliente).subscribe(resp => {
+          this.cargarClientes();
+        });
+        swal('Cliente Borrado', 'Eliminado Correctamente', 'success');
+      }
+    });
   }
   buscarCliente(termino: string) {
     if (termino.length <= 0) {
-        this.cargarClientes();
-        return;
-      }
+      this.cargarClientes();
+      return;
+    }
 
-      this.cargando = true;
+    this.cargando = true;
 
-     this.clienteServices.buscarClientes(termino).subscribe((clientes: Clientes[]) => {
-       this.cliente = clientes;
-       this.cargando = false;
-     });
+    this.clienteServices.buscarClientes(termino).subscribe((clientes: Clientes[]) => {
+      this.cliente = clientes;
+      this.cargando = false;
+    });
+  }
+  cambiarDesde(valor: number) {
+    let desde = this.desde + valor;
 
-
+    if (desde >= this.total) {
+      return;
+    }
+    if (desde < 0) {
+      return;
+    }
+    this.desde += valor;
+    this.cargarClientes();
   }
 }

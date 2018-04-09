@@ -57,12 +57,12 @@ return this.http.get(url)
 .map((resp: any) => resp.pagos);
 
 }
-actualizarPagos(pago: Pagos) {
+// actualizarPagos(pago: Pagos) {
 
 
 
 
-}
+// }
 borrarPagos(pago: Pagos) {
 
 let url = URL_SERVICIOS + '/pagos/' + pago._id;

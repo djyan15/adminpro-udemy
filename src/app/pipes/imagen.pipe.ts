@@ -26,7 +26,7 @@ switch (tipo) {
   break;
 
   default:
-console.log('TIpo de imagen no existe, usaurio, articuulos');
+console.log('Tipo de imagen no existe, usaurio, articuulos');
 url += '/uuarios/abc';
 break;
 }

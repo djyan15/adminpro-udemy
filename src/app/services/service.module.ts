@@ -1,12 +1,23 @@
-import { ClientesService } from './clientes/clientes.service';
+
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SettingsService, LoginGuardGuard, SidebarService, SharedService, UsuarioService, SubirArchivoService } from './service.index';
+// tslint:disable-next-line:max-line-length
+import {
+  SettingsService,
+  LoginGuardGuard,
+  ArticulosService, SidebarService,
+  ClientesService,
+  SharedService,
+  UsuarioService,
+  SubirArchivoService,
+} from './service.index';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalUploadService } from '../components/modal-upload/modal-upload.service';
 import { PagosService } from './pagos/pagos.service';
+import { FacturacionService } from './facturacion/facturacion.service';
+// import {  ArticulosService } from './articulos/articulos.service';
 @NgModule({
   imports: [CommonModule, HttpClientModule],
   providers: [LoginGuardGuard,
@@ -14,7 +25,12 @@ import { PagosService } from './pagos/pagos.service';
       UsuarioService,
        SidebarService,
         SharedService,
-         SubirArchivoService, ClientesService, ModalUploadService, PagosService],
+         SubirArchivoService,
+          ArticulosService,
+           ClientesService,
+           ModalUploadService,
+           FacturacionService,
+           PagosService],
 
   declarations: [],
 })

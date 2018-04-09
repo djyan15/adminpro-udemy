@@ -1,3 +1,4 @@
+import { FacturasComponent } from './facturacion/facturas.component';
 import { ArticuloComponent } from './articulos/articulo.component';
 import { ClienteComponent } from './clientes/cliente.component';
 import { ClientesComponent } from './clientes/clientes.component';
@@ -44,7 +45,8 @@ const pagesRoutes: Routes = [
       { path: 'clientes', component: ClientesComponent, data: { titulo: 'Mantenimiento de Clientes' } },
       { path: 'articulos', component: ArticulosComponent, data: { titulo: 'Mantenimiento de Articulos' } },
       { path: 'articulo/:id', component: ArticuloComponent, data: { titulo: 'Articulos' } },
-      { path: 'facturacion', component: FacturacionComponent, data: { titulo: 'Realizar Factura de Articulo' } },
+      { path: 'facturacion/:id', component: FacturacionComponent, data: { titulo: 'Realizar Factura de Articulo' } },
+      { path: 'facturas', component: FacturasComponent, data: { titulo: 'Facturas de Articulo' } },
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     ],
   },

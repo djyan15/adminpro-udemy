@@ -12,8 +12,8 @@
                 <div class="modal-body text-center">
 
 
-                    <img *ngIf="!imagenTemp" [src]="'okey' | imagen" class="w150">
-                    <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150">
+                    <img *ngIf="!imagenTemp" [src]="'okey' | imagen" class="w150p">
+                    <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150p">
 
                     <input (change)="seleccionImage($event.target.files[0])" type="file">
 

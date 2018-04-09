@@ -52,7 +52,7 @@ export class PagoComponent implements OnInit {
     }
     this._pagosServices.guardarPagos(this.pago).subscribe(pago => {
       this.router.navigate(['/pagos']);
-      // console.log(pago);
+       console.log(pago);
     });
   }
 }

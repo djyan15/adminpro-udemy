@@ -12,17 +12,55 @@
     width: 150;
 }
 
+.w150p {
+    width: 150px;
+}
+
+.black {
+    background-color: aquamarine;
+}
+
+
+/* .text {
+    text-decoration-color: blue;
+} */
+
 .w70 {
     width: 70px;
 }
+
+
+/* .fa-fw {
+    width: 1.28571429em;
+    text-align: center;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+} */
 
 .img-50 {
     width: 50px;
 }
 
+.img-100 {
+    width: 100px;
+}
+
 .oculto {
     display: none;
 }
+
+
+/* .w70artic {
+    width: 130px;
+    height: 130px;
+} */
 
 .fondo-negro {
     background-color: rgba( 0, 0, 0, 0.4);

@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <!--  -->
+
                 <input #input type="text" (keyup)="buscarCliente(input.value)" class="form-control" placeholder="Buscar Clientes...">
 
 
@@ -64,7 +64,7 @@
                             <td>{{ client.cedula }}</td>
                             <td>{{client.cuenta}}</td>
                             <td>
-                                <select [(ngModel)]="client.estado" name="estados" disabled="true" class="form-control">
+                                <select [(ngModel)]="client.estado" name="estado" disabled="true" class="form-control">
                                     <option value="Activo">Activo</option>
                                     <option value="Inactivo">Inactivo</option>
                                 </select>
@@ -85,9 +85,9 @@
                         </tr>
                     </tbody>
                 </table>
-                <button class="btn btn-secondary"> Anteriores
+                <button class="btn btn-secondary" (click)="cambiarDesde(-5)"> Anteriores
                                 </button>
-                <button class="btn btn-secondary">
+                <button class="btn btn-secondary" (click)="cambiarDesde(5)">
                   Siguientes
                 </button>
                 <!-- (click)="cambiarDesde(-5)"  (click)="cambiarDesde(5)" -->
