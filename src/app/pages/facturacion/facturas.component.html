@@ -98,11 +98,11 @@
 
                             </td>
                             <td>
-                                <button [routerLink]="[ '/facturacion', facturas._id ] " class="btn btn-primary ">
+                                <button [routerLink]="[ '/facturacion', facturas._id ] " class="btn btn-primary">
                                 <i class="fa fa-edit "></i>
                               </button>
 
-                                <button class="btn btn-danger ">
+                                <button (click)="borrarFacturas(facturas)" class="btn btn-danger">
                                 <i class="fa fa-trash-o "></i>
                               </button>
                             </td>

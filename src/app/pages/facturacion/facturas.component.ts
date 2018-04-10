@@ -21,7 +21,7 @@ export class FacturasComponent implements OnInit {
   cargarFacturas() {
     this.cargando = true;
     this.facturacionService.cargarFacturas().subscribe((resp: any) => {
-      console.log(resp.factura);
+      // console.log(resp.factura);
       this.total = resp.total;
       this.factura = resp.factura;
       this.cargando = false;
@@ -30,7 +30,7 @@ export class FacturasComponent implements OnInit {
   borrarFacturas(facturas: Facturacion) {
     swal({
       title: '¿Esta seguro?',
-      text: 'Esta a punto de borrar la factura del articulo' + facturas.articulo,
+      text: 'Esta a punto de borrar la factura del articulo',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
@@ -51,6 +51,7 @@ export class FacturasComponent implements OnInit {
     this.cargando = true;
 
     this.facturacionService.buscarFacturas(termino).subscribe((facturas: Facturacion[]) => {
+      console.log(facturas);
       this.factura = facturas;
       this.cargando = false;
     });

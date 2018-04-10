@@ -2,41 +2,81 @@
 
     <div class="col-md-6">
         <div class="card card-body">
-            <h3 class="box-title m-b-0">Factura: </h3>
+            <h3 class="box-title m-b-0">Facturar: </h3>
             <br>
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
                     <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarFactura(f)">
-                        <!-- (change)="cambioArticulo( $event.target.value )" -->
-                        <select [(ngModel)]="medico.hospital" name="hospital" class="form-control" required>
+                        <!--  -->
+                        <div class="form-group">
+                            <label>Articulo</label>
+
+                            <select (change)="cambioArticulo( $event.target.value )" [(ngModel)]="factura.articulo" name="articulo" #articulo="ngModel" class="form-control" required>
                               <option value="">Seleccione un Articulo</option>
-                              <option *ngFor="let hospital of hospitales" [value]="hospital._id">
-                                <!-- {{ articulo.nombre }} -->
+                              <option *ngFor="let articulo of articulos" [value]="articulo._id">
+                                {{ articulo.descripcion }}
                               </option>
                             </select>
-                        <select [(ngModel)]="medico.hospital" name="hospital" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Clientes</label>
+                            <select [(ngModel)]="factura.cliente" name="cliente" class="form-control" required>
                               <option value="">Seleccione un Cliente</option>
-                              <option *ngFor="let hospital of hospitales" [value]="hospital._id">
-                                <!-- {{ articulo.nombre }} -->
+                              <option *ngFor="let cliente of clientes" [value]="cliente._id">
+                                {{ cliente.nombreComercial }}
                               </option>
                             </select>
 
-                        <div class="form-group">
-                            <label>Descripción</label>
-                            <input [(ngModel)]="articulo.descripcion" name="descripcion" type="text" class="form-control" placeholder="Descripción del articulo" required>
                         </div>
 
                         <div class="form-group">
                             <label>Precio</label>
-                            <input [(ngModel)]="articulo.precio" name="precio" type="text" class="form-control" placeholder="Precio del articulo" required>
+                            <input [(ngModel)]="factura.precio" #pago="ngModel" pattern="[0-9]{1,10}" name="precio" type="text" class="form-control" placeholder="Precio" required>
+                            <div class="text-danger" *ngIf="pago.errors?.pattern">
+                                Este campo solo acepta numeros
+                            </div>
                         </div>
-                        <div>
+                        <div class="form-group">
+                            <label>Pagos</label>
+                            <select [(ngModel)]="factura.pago" name="pago" class="form-control" required>
+                              <option value="">Seleccione la Condicion de pago</option>
+                              <option *ngFor="let pago of pagos" [value]="pago._id">
+                                {{ pago.descripcion }}
+                              </option>
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Cantidad</label>
+                            <input [(ngModel)]="factura.cantidad" #cantidad="ngModel" name="cantidad" type="text" pattern="[0-9]{1,5}" class="form-control" placeholder="Comision del Vendedor" required>
+                            <div class="text-danger" *ngIf="cantidad.errors?.pattern">
+                                Este campo solo acepta numeros
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Comision</label>
+                            <input [(ngModel)]="factura.comision" #comision="ngModel" name="comision" type="text" pattern="[0-9]{1,2}" class="form-control" placeholder="Comision del Vendedor" required>
+                            <div class="text-danger" *ngIf="comision.errors?.pattern">
+                                Este campo solo acepta numeros
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Comentario</label>
+                            <input [(ngModel)]="factura.comentario" name="comentario" type="text" class="form-control" placeholder="Comentario" required>
+                        </div>
+                        <div class="form-group">
+                            <label>fecha</label>
+                            <input [(ngModel)]="factura.fecha" name="fecha" type="date" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
                             <label>Estado</label>
-                            <select [(ngModel)]="articulo.estado" name="estado" class="form-control" required>
-                        <!-- [(ngModel)]="cliente.estado" -->
+                            <select [(ngModel)]="factura.estado" name="estado" class="form-control" required>
                                     <option value="">Seleccione Una Opción</option>
-                                   <option value ="Activo">Activo</option>
-                             <option value ="Inactivo">Inactivo</option>
+                                   <option value ="Pagada">Pagada</option>
+                             <option value ="Pendiente">Pendiente</option>
                                 </select>
                         </div>
                         <!-- <div class="form-group">
@@ -51,11 +91,11 @@
                         </div> -->
 
                         <br>
-                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                        <button type="submit" [disabled]="f.invalid" class="btn btn-success waves-effect waves-light m-r-10">
                           <i class="fa fa-save"></i>
                           Guardar
                         </button>
-                        <a routerLink="/articulos" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+                        <a routerLink="/dashboard" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
                     </form>
                 </div>
             </div>
@@ -71,12 +111,17 @@
         </div>
     </div> -->
 
-    <div class="col-md-6" *ngIf="articulo._id">
+    <div class="col-md-6">
         <div class="card card-body">
-            <h4 class="box-title m-b-0">Fotografía</h4>
+            <h4 class="box-title m-b-0">Articulo</h4>
             <br>
-            <img (click)="cambiarFoto()" [src]="articulo.img | imagen:'articulos'" class="img-circle img-fluid pointer w150">
+            <img [src]="artic.img | imagen:'articulos'" class="rounded img-fluid">
+            <!-- <img (click)="cambiarFoto()" [src]="articulo.img | imagen:'articulos'" class="img-circle img-fluid pointer w150"> -->
         </div>
     </div>
+
+
+
+
 
 </div>

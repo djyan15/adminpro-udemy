@@ -14,18 +14,15 @@
                         <div class="form-group ">
                             <label>Cedula o RNC</label>
                             <!--  -->
-                            <input #cedula="ngModel" name="cedula" [(ngModel)]="cliente.cedula" type="text" placeholder="Cedula del cliente " class="form-control" min=1 required>
+                            <input #cedula="ngModel" name="cedula" pattern="[0-9]{11}" [(ngModel)]="cliente.cedula" type="text" placeholder="Cedula del cliente " class="form-control" min=1 required>
+                            <div class="text-danger" *ngIf="cedula.errors?.pattern">
+                                La cedula debe ser igual a 11 digitos y este campo solo acepta numeros
+                            </div>
+                        </div>
 
-                        </div>
-                        <!---->
-                        <div class="form-group">
-                            <p class="text-danger" *ngIf="">
-                                La cedula no es valida
-                            </p>
-                        </div>
                         <div class="form-group ">
                             <label>Cuenta</label>
-                            <input [(ngModel)]="cliente.cuenta" name="cuenta" placeholder="Numero de cuenta del cliente" type="text" class="form-control" required>
+                            <input [(ngModel)]="cliente.cuenta" pattern="[0-9]{10}" name="cuenta" placeholder="Numero de cuenta del cliente" type="text" class="form-control" required>
                         </div>
                         <div>
                             <label>Estado</label>

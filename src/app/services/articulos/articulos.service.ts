@@ -10,6 +10,7 @@ declare var swal: any;
 @Injectable()
 export class ArticulosService {
   articulo: Articulos;
+total: number = 0;
   constructor(public http: HttpClient, public _usuarioServices: UsuarioService) {}
 
   borrarArticulo(articulo: Articulos) {
@@ -49,7 +50,11 @@ export class ArticulosService {
   cargarArticulos() {
     let url = URL_SERVICIOS + '/articulo';
 
-    return this.http.get(url);
+    return this.http.get(url).map((resp: any) => {
+    // resp.total;
+      // console.log(resp);
+      return resp;
+    });
   }
 
   buscarArticulo(termino: string) {

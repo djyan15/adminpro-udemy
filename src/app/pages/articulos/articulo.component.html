@@ -14,7 +14,7 @@
 
                         <div class="form-group">
                             <label>Precio</label>
-                            <input [(ngModel)]="articulo.precio" name="precio" type="text" class="form-control" placeholder="Precio del articulo" required>
+                            <input [(ngModel)]="articulo.precio" pattern="[0-9]{1,10}" name="precio" type="text" class="form-control" placeholder="Precio del articulo" required>
                         </div>
                         <div>
                             <label>Estado</label>

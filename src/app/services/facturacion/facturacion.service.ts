@@ -54,6 +54,6 @@ export class FacturacionService {
 
   buscarFacturas(termino: string) {
     let url = URL_SERVICIOS + '/busqueda/coleccion/facturacion/' + termino;
-    return this.http.get(url).map((resp: any) => resp.factura);
+    return this.http.get(url).map((resp: any) => resp.facturacion);
   }
 }

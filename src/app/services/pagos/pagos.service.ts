@@ -9,73 +9,58 @@ import { Pagos } from '../../models/pagos.model';
 @Injectable()
 export class PagosService {
   pagos: Pagos;
+  total: number = 0;
   constructor(public http: HttpClient, public _usuarioServices: UsuarioService) {}
   cargarPagos() {
     let url = URL_SERVICIOS + '/pagos';
 
-   return this.http.get( url );
+    return this.http.get(url).map((resp: any) => {
+      this.total = resp.total;
+      // console.log(resp);
+      return resp;
+    });
   }
-guardarPagos(pago: Pagos) {
+  guardarPagos(pago: Pagos) {
+    let url = URL_SERVICIOS + '/pagos';
 
- let url = URL_SERVICIOS + '/pagos';
+    if (pago._id) {
+      // ACTUALIZAR
 
+      url += '/' + pago._id;
+      url += '?token=' + this._usuarioServices.token;
 
-if (pago._id) {
-// ACTUALIZAR
+      return this.http.put(url, pago).map((resp: any) => {
+        swal('Pago Actualizado', pago.descripcion, 'success');
+        return resp.pagos;
+      });
+    } else {
+      // CREAR
 
-  url += '/' + pago._id;
-  url += '?token=' + this._usuarioServices.token;
+      url += '?token=' + this._usuarioServices.token;
+      return this.http.post(url, pago).map((resp: any) => {
+        swal('Pago Creado', pago.descripcion, 'success');
+        return resp.pagos;
+      });
+    }
+  }
+  CargarPagosId(id: string) {
+    let url = URL_SERVICIOS + '/pagos/' + id;
 
-  return this.http.put(url, pago).map((resp: any) => {
-    swal('Pago Actualizado', pago.descripcion, 'success');
-    return resp.pagos;
-  });
+    return this.http.get(url).map((resp: any) => resp.pagos);
+  }
+  // actualizarPagos(pago: Pagos) {
 
+  // }
+  borrarPagos(pago: Pagos) {
+    let url = URL_SERVICIOS + '/pagos/' + pago._id;
 
+    url += '?token=' + this._usuarioServices.token;
 
-} else {
-// CREAR
+    return this.http.delete(url);
+  }
+  obtenerPagos(id: string) {
+    let url = URL_SERVICIOS + '/pagos/' + id;
 
-url += '?token=' + this._usuarioServices.token;
-return this.http.post(url, pago)
-.map((resp: any) => {
-  swal('Pago Creado', pago.descripcion, 'success');
-  return resp.pagos;
-});
-
-}
-
-
-
-
-}
-CargarPagosId(id: string) {
-
-let url = URL_SERVICIOS + '/pagos/' + id;
-
-return this.http.get(url)
-.map((resp: any) => resp.pagos);
-
-}
-// actualizarPagos(pago: Pagos) {
-
-
-
-
-// }
-borrarPagos(pago: Pagos) {
-
-let url = URL_SERVICIOS + '/pagos/' + pago._id;
-
-url += '?token=' + this._usuarioServices.token;
-
-return this.http.delete( url );
-
-}
-obtenerPagos(id: string) {
-let url = URL_SERVICIOS + '/pagos/' + id;
-
-return this.http.get(url)
-.map((resp: any) => resp.pagos);
-}
+    return this.http.get(url).map((resp: any) => resp.pagos);
+  }
 }

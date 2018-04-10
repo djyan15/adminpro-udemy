@@ -11,6 +11,7 @@ declare var swal: any;
 @Injectable()
 export class ClientesService {
   cliente: Clientes;
+  total: number = 0;
   constructor(public http: HttpClient, public _usuarioServices: UsuarioService) {}
   borrarClientes(cliente: Clientes) {
     let url = URL_SERVICIOS + '/cliente/' + cliente._id;
@@ -26,14 +27,10 @@ export class ClientesService {
 
   // return this.http.put(url, cliente);
   //  }
- cargarClientesId(id: string ) {
-  let url = URL_SERVICIOS + '/cliente/' + id;
+  cargarClientesId(id: string) {
+    let url = URL_SERVICIOS + '/cliente/' + id;
 
-  return this.http.get(url)
-  .map((resp: any ) => resp.cliente);
-
-
-
+    return this.http.get(url).map((resp: any) => resp.cliente);
   }
   guardarClientes(cliente: Clientes) {
     let url = URL_SERVICIOS + '/cliente';
@@ -49,7 +46,7 @@ export class ClientesService {
       });
     } else {
       url += '?token=' + this._usuarioServices.token;
-     return this.http.post(url, cliente).map((resp: any) => {
+      return this.http.post(url, cliente).map((resp: any) => {
         swal('Cliente Creado', cliente.nombreComercial, 'success');
         return resp.clientes;
       });
@@ -68,7 +65,11 @@ export class ClientesService {
   cargarClientes() {
     let url = URL_SERVICIOS + '/cliente';
 
-    return this.http.get(url);
+    return this.http.get(url).map((resp: any) => {
+      this.total = resp.total;
+      // console.log(resp);
+      return resp;
+    });
   }
 
   buscarClientes(termino: string) {
