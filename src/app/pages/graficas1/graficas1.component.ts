@@ -10,16 +10,16 @@ export class Graficas1Component implements OnInit {
 
   graficos: any = {
     'grafico1': {
-      'labels': ['Con Frijoles', 'Con Natilla', 'Con tocino'],
-      'data':  [24, 30, 46],
+      'labels': ['Zapato', 'Lente', 'Sandalia'],
+      'data':  [10, 20, 30],
       'type': 'doughnut',
-      'leyenda': 'El pan se come con'
+      'leyenda': 'Los articulos son: '
     },
     'grafico2': {
       'labels': ['Hombres', 'Mujeres'],
       'data':  [4500, 6000],
       'type': 'doughnut',
-      'leyenda': 'Entrevistados'
+      'leyenda': 'Articulos mas usados por:'
     },
     'grafico3': {
       'labels': ['Si', 'No'],
