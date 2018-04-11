@@ -11,8 +11,9 @@ import { IncrementadorComponent } from './components/incrementador/incrementador
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { ServiceModule } from './services/service.module';
+
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegistrerComponent],
+  declarations: [AppComponent, LoginComponent, RegistrerComponent ],
   imports: [BrowserModule, APP_ROUTES, PagesModule, FormsModule, ServiceModule, ReactiveFormsModule, CustomFormsModule],
   providers: [],
   bootstrap: [AppComponent],

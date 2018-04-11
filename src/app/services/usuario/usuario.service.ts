@@ -7,11 +7,13 @@ import { HttpClient } from '@angular/common/http';
 // import { SweetAlert } from 'sweetalert/typings/core';
 // const swal: SweetAlert = _swal as any;
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 
 
 import { Router } from '@angular/router';
 import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
@@ -19,6 +21,7 @@ export class UsuarioService {
 
   usuario: Usuario;
   token: string;
+  menu: any[] = [];
   constructor(public http: HttpClient, public router: Router, public _subirArchivo: SubirArchivoService) {
 
   this.cargarStorage();
@@ -34,30 +37,35 @@ cargarStorage() {
 if ( localStorage.getItem('token')) {
  this.token = localStorage.getItem('token');
  this.usuario = JSON.parse( localStorage.getItem('usuario') );
-return this.usuario;
+ this.menu = JSON.parse(localStorage.getItem('menu'));
+
+ return this.usuario;
 } else {
    this.token = '';
    this.usuario = null;
+   this.menu = [];
 }
 // tslint:disable-next-line:no-debugger
 // debugger;
 }
-guardarStorage (id: string, token: string, usuario: Usuario) {
+guardarStorage (id: string, token: string, usuario: Usuario, menu: any) {
 localStorage.setItem('id', id);
 localStorage.setItem('token', token);
 localStorage.setItem('usuario', JSON.stringify(usuario));
+localStorage.setItem('menu', JSON.stringify(menu));
 
 this.usuario = usuario;
 this.token = token;
-
+this.menu = menu;
 }
 
 logout() {
 this.usuario = null;
 this.token = '';
-
+this.menu = [];
 localStorage.removeItem('token');
 localStorage.removeItem('usuario');
+localStorage.removeItem('menu');
 
 this.router.navigate(['/login']);
 
@@ -77,12 +85,16 @@ localStorage.setItem('email', usuario.email);
   }
 let url = URL_SERVICIOS + '/login';
 
-return this.http.post(url, usuario)
+    return this.http.post(url, usuario)
           .map((resp: any) => {
+           this.guardarStorage( resp.id, resp.token, resp.usuario, resp.menu );
+           return true;
+           }).catch(err => {
 
-this.guardarStorage( resp.id, resp.token, resp.usuario);
-        return true;
-});
+
+             swal('Error en el login', err.error.mensaje, 'error');
+return Observable.throw(err );
+           });
 
 
 }
@@ -115,7 +127,7 @@ return this.http.put(url, usuario)
 // this.usuario = resp.usuario;
 if (usuario._id === this.usuario._id) {
   let user: Usuario = resp.usuario;
-  this.guardarStorage(user._id, this.token, user);
+  this.guardarStorage(user._id, this.token, user, this.menu);
 }
 
 
@@ -135,7 +147,7 @@ this._subirArchivo.subirArchivo(archivo, 'usuarios', id)
 this.usuario.img = resp.usuario.img;
 swal( 'Imagen Actualizada', this.usuario.nombre, 'success' );
 
-this.guardarStorage(id, this.token, this.usuario);
+this.guardarStorage(id, this.token, this.usuario, this.menu);
 
 })
 .catch(resp => {

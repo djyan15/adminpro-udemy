@@ -5,6 +5,7 @@ import { URL_SERVICIOS } from './../../config/config';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { UsuarioService } from '../usuario/usuario.service';
+import { Observable } from 'rxjs/Observable';
 
 
 declare var swal: any;
@@ -40,16 +41,27 @@ export class ClientesService {
       url += '/' + cliente._id;
       url += '?token=' + this._usuarioServices.token;
 
-      return this.http.put(url, cliente).map((resp: any) => {
-        swal('Cliente Actualizado', cliente.nombreComercial, 'success');
-        return resp.clientes;
-      });
+      return this.http
+        .put(url, cliente)
+        .map((resp: any) => {
+          swal('Cliente Actualizado', cliente.nombreComercial, 'success');
+          return resp.clientes;
+        })
+        .catch(err => {
+          swal(err.error.mensaje, err.error.errors.message, 'error');
+          return Observable.throw(err);
+        });
     } else {
       url += '?token=' + this._usuarioServices.token;
-      return this.http.post(url, cliente).map((resp: any) => {
-        swal('Cliente Creado', cliente.nombreComercial, 'success');
-        return resp.clientes;
-      });
+      return this.http
+        .post(url, cliente)
+        .map((resp: any) => {
+          swal('Cliente Creado', cliente.nombreComercial, 'success');
+          return resp.clientes;
+        }).catch(err => {
+          swal(err.error.mensaje, err.error.errors.message, 'error');
+          return Observable.throw(err);
+        });
     }
   }
   //  crearClientes (cliente: Clientes) {

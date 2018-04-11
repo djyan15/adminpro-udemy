@@ -48,7 +48,7 @@
                         </div>
                         <div class="form-group">
                             <label>Cantidad</label>
-                            <input [(ngModel)]="factura.cantidad" #cantidad="ngModel" name="cantidad" type="text" pattern="[0-9]{1,5}" class="form-control" placeholder="Comision del Vendedor" required>
+                            <input [(ngModel)]="factura.cantidad" #cantidad="ngModel" name="cantidad" type="text" pattern="[0-9]{1,5}" class="form-control" placeholder="Cantidad de articulos" required>
                             <div class="text-danger" *ngIf="cantidad.errors?.pattern">
                                 Este campo solo acepta numeros
                             </div>
@@ -68,7 +68,7 @@
                         </div>
                         <div class="form-group">
                             <label>fecha</label>
-                            <input [(ngModel)]="factura.fecha" name="fecha" type="date" class="form-control" required>
+                            <input [(ngModel)]="factura.fecha " name="fecha" type="date" class="form-control" required>
                         </div>
 
                         <div class="form-group">

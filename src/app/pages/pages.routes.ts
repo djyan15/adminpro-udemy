@@ -20,6 +20,7 @@ import { ArticulosComponent } from './articulos/articulos.component';
 import { FacturacionComponent } from './facturacion/facturacion.component';
 import { PagoComponent } from './pagos/pago.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
+import { AdminGuard } from '../services/service.index';
 
 
 const pagesRoutes: Routes = [
@@ -36,15 +37,21 @@ const pagesRoutes: Routes = [
       { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },
       { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil del Usuario' } },
       { path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Resultado de la busqueda' } },
-      // Mantenimietnos
-      { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenimiento de Usuarios' } },
-      { path: 'pagos', component: PagosComponent, data: { titulo: 'Mantenimiento de Pagos' } },
-      { path: 'pago/:id', component: PagoComponent, data: { titulo: 'Pagos' } },
-
-      { path: 'cliente/:id', component: ClienteComponent, data: { titulo: 'Clientes' } },
-      { path: 'clientes', component: ClientesComponent, data: { titulo: 'Mantenimiento de Clientes' } },
+      // Mantenimientos
       { path: 'articulos', component: ArticulosComponent, data: { titulo: 'Mantenimiento de Articulos' } },
       { path: 'articulo/:id', component: ArticuloComponent, data: { titulo: 'Articulos' } },
+
+      {
+        path: 'usuarios',
+       component: UsuariosComponent,
+       canActivate: [ AdminGuard],
+       data: { titulo: 'Mantenimiento de Usuarios' }
+       },
+      { path: 'pagos', component: PagosComponent, canActivate: [AdminGuard], data: { titulo: 'Mantenimiento de Pagos' } },
+      { path: 'pago/:id', component: PagoComponent,  canActivate: [AdminGuard], data: { titulo: 'Pagos' } },
+
+      { path: 'cliente/:id', component: ClienteComponent, canActivate: [AdminGuard], data: { titulo: 'Clientes' } },
+      { path: 'clientes', component: ClientesComponent, canActivate: [AdminGuard], data: { titulo: 'Mantenimiento de Clientes' } },
       { path: 'facturacion/:id', component: FacturacionComponent, data: { titulo: 'Realizar Factura de Articulo' } },
       { path: 'facturas', component: FacturasComponent, data: { titulo: 'Facturas de Articulo' } },
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },

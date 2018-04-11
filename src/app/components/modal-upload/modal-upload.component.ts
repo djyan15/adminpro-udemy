@@ -45,7 +45,7 @@ export class ModalUploadComponent implements OnInit {
 // console.log(this._modalupload.id);
 // console.log(this.usuarioService.usuario._id);
 if (this._modalupload.id === this.usuarioService.usuario._id) {
-this.usuarioService.guardarStorage(this._modalupload.id, this.usuarioService.token, resp.usuario);
+this.usuarioService.guardarStorage(this._modalupload.id, this.usuarioService.token, resp.usuario, resp.menu);
 
   this._modalupload.notificacion.emit(resp);
   this.cerrarModal();

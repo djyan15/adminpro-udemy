@@ -27,14 +27,44 @@ export class FacturacionComponent implements OnInit {
     public facturacion: FacturacionService,
     public clientesServices: ClientesService,
     public pagosServices: PagosService,
-    public articulosServices: ArticulosService
-  ) {}
+    public activedRoute: ActivatedRoute,
+    public articulosServices: ArticulosService,
+    public router: Router
+  ) {
+    activedRoute.params.subscribe(params => {
+      let id = params['id'];
 
+      if (id !== 'nuevo') {
+        this.cargarFacturas(id);
+      }
+    });
+
+
+
+  }
+
+cargarFacturas(id: string) {
+
+  this.facturacion.cargarFacturasId(id).subscribe(facturas => {
+    this.cambioArticulo(facturas.articulo._id);
+this.factura = facturas;
+this.factura.articulo = facturas.articulo._id;
+this.factura.cliente = facturas.cliente._id;
+this.factura.pago = facturas.pago._id;
+this.factura.fecha = facturas.fecha;
+
+
+  });
+
+
+}
   ngOnInit() {
     this.clientesServices.cargarClientes().subscribe(clientes => (this.clientes = clientes.clientes));
 
     this.pagosServices.cargarPagos().subscribe(pagos => (this.pagos = pagos.pagos));
-    this.articulosServices.cargarArticulos().subscribe(articulo => (this.articulos = articulo.articulos));
+    this.articulosServices.cargarArticulos().subscribe(articulo => {
+this.articulos = articulo.articulos;
+    } );
   }
   guardarFactura(f: NgForm) {
     console.log(f.valid);
@@ -43,13 +73,9 @@ export class FacturacionComponent implements OnInit {
       return;
     }
     this.facturacion.guardarFacturas(this.factura).subscribe(factura => {});
+this.router.navigate(['/facturas']);
   }
-  cambioArticulo (id: string) {
-
-    this.articulosServices.cargarArticulosId(id)
-    .subscribe( articulo => this.artic = articulo
-);
-
-
+  cambioArticulo(id: string) {
+    this.articulosServices.cargarArticulosId(id).subscribe(articulo => (this.artic = articulo));
   }
 }

@@ -12,6 +12,7 @@ import {
   SharedService,
   UsuarioService,
   SubirArchivoService,
+  AdminGuard
 } from './service.index';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalUploadService } from '../components/modal-upload/modal-upload.service';
@@ -20,7 +21,7 @@ import { FacturacionService } from './facturacion/facturacion.service';
 // import {  ArticulosService } from './articulos/articulos.service';
 @NgModule({
   imports: [CommonModule, HttpClientModule],
-  providers: [LoginGuardGuard,
+  providers: [LoginGuardGuard, AdminGuard,
      SettingsService,
       UsuarioService,
        SidebarService,

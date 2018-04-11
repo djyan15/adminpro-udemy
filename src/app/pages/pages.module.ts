@@ -27,7 +27,7 @@ import { ClienteComponent } from './clientes/cliente.component';
 import { ArticuloComponent } from './articulos/articulo.component';
 import { FacturasComponent } from './facturacion/facturas.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
-
+ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 @NgModule({
   declarations: [
     PagesComponent,
@@ -60,6 +60,7 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
     IncrementadorComponent,
     GraficoDonaComponent,
   ],
-  imports: [SharedModule, ReactiveFormsModule, PipesModule, CommonModule, PagesRoutingModule, FormsModule, ChartsModule],
+  // tslint:disable-next-line:max-line-length
+  imports: [SharedModule, OwlDateTimeModule, OwlNativeDateTimeModule , ReactiveFormsModule, PipesModule, CommonModule, PagesRoutingModule, FormsModule, ChartsModule],
 })
 export class PagesModule {}

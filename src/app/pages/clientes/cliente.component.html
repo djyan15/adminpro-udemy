@@ -22,7 +22,10 @@
 
                         <div class="form-group ">
                             <label>Cuenta</label>
-                            <input [(ngModel)]="cliente.cuenta" pattern="[0-9]{10}" name="cuenta" placeholder="Numero de cuenta del cliente" type="text" class="form-control" required>
+                            <input #cuenta="ngModel" [(ngModel)]="cliente.cuenta" pattern="[0-9]{10}" name="cuenta" placeholder="Numero de cuenta del cliente" type="text" class="form-control" required>
+                            <div class="text-danger" *ngIf="cuenta.errors?.pattern">
+                                La cuenta debe ser igual a 11 digitos y este campo solo acepta numeros
+                            </div>
                         </div>
                         <div>
                             <label>Estado</label>

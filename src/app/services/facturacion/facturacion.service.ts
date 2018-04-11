@@ -22,7 +22,7 @@ export class FacturacionService {
   cargarFacturasId(id: string) {
     let url = URL_SERVICIOS + '/facturacion/' + id;
 
-    return this.http.get(url).map((resp: any) => resp.articulo);
+    return this.http.get(url).map((resp: any) => resp.factura);
   }
 
   guardarFacturas(facturas: Facturacion) {
@@ -34,14 +34,14 @@ export class FacturacionService {
       url += '?token=' + this._usuarioServices.token;
 
       return this.http.put(url, facturas).map((resp: any) => {
-        swal('Factura Actualizado', 'se facturo el ' + facturas.articulo, 'success');
+        swal('Factura Actualizado', 'se facturo el articulo' , 'success');
         return resp.articulo;
       });
     } else {
       // crear
       url += '?token=' + this._usuarioServices.token;
       return this.http.post(url, facturas).map((resp: any) => {
-        swal('Facturación', 'se facturo el ' + facturas.articulo, 'success');
+        swal('Facturación', 'se facturo el articulo ', 'success');
         return resp.articulo;
       });
     }
